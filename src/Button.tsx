@@ -1,8 +1,12 @@
+import { FilterValuesType } from './App';
+
 type ButtonPropsType = {
-  btnName: string
+  btnName: FilterValuesType
+  changeFilter: (value: FilterValuesType) => void
 }
 
-export const Button = ({btnName}: ButtonPropsType) => {
-  return <button>{btnName}</button>
+export const Button = ({ btnName, changeFilter }: ButtonPropsType) => {
+
+  return <button onClick={() => { changeFilter(btnName) } }>{btnName}</button>
 };
 
