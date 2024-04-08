@@ -24,7 +24,7 @@ function App() {
 
     function addTask(title: string) {
         let newTask = { id: v1(), title: title, isDone: false };
-        setTasks([...tasks, newTask]);
+        setTasks([newTask, ...tasks]);
     }
 
     function changeTaskStatus(taskId: string, isDone: boolean) {
@@ -58,6 +58,7 @@ function App() {
                 changeFilter={changeFilter}
                 addTask={addTask}
                 changeTaskStatus={changeTaskStatus}
+                filter={filter}
             />
         </div>
     );

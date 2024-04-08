@@ -3,10 +3,17 @@ import { FilterValuesType } from './App';
 type ButtonPropsType = {
   btnName: FilterValuesType
   changeFilter: (value: FilterValuesType) => void
+  btnColor: 'active-filter' | ''
 }
 
-export const Button = ({ btnName, changeFilter }: ButtonPropsType) => {
+export const Button = (props: ButtonPropsType) => {
+  const { btnName, changeFilter, btnColor } = props;
 
-  return <button onClick={() => { changeFilter(btnName) } }>{btnName}</button>
+  return <button 
+  className={btnColor}
+  onClick={() => { changeFilter(btnName) }}
+  >
+    {btnName}
+  </button>
 };
 

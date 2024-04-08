@@ -9,8 +9,24 @@
 
 
 .todoList {
-  background-color: aquamarine;
+  background-color: rgb(161, 118, 230);
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+.active-filter {
+  background-color: aquamarine; 
+}
+
+.is-done {
+  opacity: 0.5;
 }
