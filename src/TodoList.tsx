@@ -1,8 +1,10 @@
 import React, { ChangeEvent } from 'react';
-import { Button } from './Button';
+import { CustomButton } from './CustomButton';
 import { FilterValuesType } from './App';
 import AddItemForm from './AddItemForm';
 import EditableSpan from './EditableSpan';
+import {Checkbox, IconButton} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 type TodoListPropsType = {
   title: string
@@ -38,7 +40,7 @@ export const TodoList: React.FC<TodoListPropsType> = (props) => {
 
   const taskList: JSX.Element = tasks.length === 0
     ? <span>Список пуст</span>
-    : <ul>
+    : <div>
       {
         tasks.map((t: TaskType) => {
 
@@ -52,17 +54,19 @@ export const TodoList: React.FC<TodoListPropsType> = (props) => {
           }
 
           return (
-            <li key={t.id} className={t.isDone ? 'is-done' : ''}>
-              <input type="checkbox"
+            <div key={t.id} className={t.isDone ? 'is-done' : ''}>
+              <Checkbox
                 checked={t.isDone}
                 onChange={onChangeStatusHandler} />
               <EditableSpan title={t.title} onChange={onChangeTitleHandler} />
-              <button onClick={() => { removeTask(t.id, todolistId) }}>X</button>
-            </li>
+              <IconButton onClick={() => { removeTask(t.id, todolistId) }}>
+                <DeleteIcon />
+              </IconButton>
+            </div>
           )
         })
       }
-    </ul>
+    </div>
 
   const addTask = (title: string) => {
     props.addTask(title, props.todolistId)
@@ -82,16 +86,18 @@ export const TodoList: React.FC<TodoListPropsType> = (props) => {
     <div className='todoList'>
       <h3>
         <EditableSpan title={title} onChange={changeTodoListTitle}  />
-        <button onClick={removeTodoList}>X</button>
+        <IconButton onClick={removeTodoList}>
+          <DeleteIcon />
+        </IconButton>
       </h3>
       <AddItemForm addItem={addTask} />
       {taskList && taskList}
       <div>
-        <Button btnColor={filter === 'all' ? 'active-filter' : ''} btnName={'all'} changeFilter={changeFilter} todolistId={props.todolistId} />
-        <Button btnColor={filter === 'active' ? 'active-filter' : ''} btnName={'active'} changeFilter={changeFilter} todolistId={props.todolistId} />
-        <Button btnColor={filter === 'completed' ? 'active-filter' : ''} btnName={'completed'} changeFilter={changeFilter} todolistId={props.todolistId} />
+        <CustomButton colorText={'primary'} btnColor={filter === 'all' ? 'contained' : 'text'} btnName={'all'} changeFilter={changeFilter} todolistId={props.todolistId} />
+        <CustomButton colorText={'success'} btnColor={filter === 'active' ? 'contained' : 'text'} btnName={'active'} changeFilter={changeFilter} todolistId={props.todolistId} />
+        <CustomButton colorText={'secondary'} btnColor={filter === 'completed' ? 'contained' : 'text'} btnName={'completed'} changeFilter={changeFilter} todolistId={props.todolistId} />
       </div>
-      <div>{date}</div>
+      <div style={{ paddingTop: '15px', textAlign: 'right' }}>{date}</div>
     </div>
   );
 };
