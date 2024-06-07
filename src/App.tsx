@@ -142,10 +142,10 @@ function App() {
                             let taskForTodoList = tasksObj[tl.id];
 
                             if (tl.filter === 'completed') {
-                                taskForTodoList = taskForTodoList.filter(t => t.isDone === true)
+                                taskForTodoList = taskForTodoList.filter(t => t.isDone)
                             }
                             if (tl.filter === 'active') {
-                                taskForTodoList = taskForTodoList.filter(t => t.isDone === false)
+                                taskForTodoList = taskForTodoList.filter(t => !t.isDone)
                             }
 
                             return <Grid item>
