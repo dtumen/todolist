@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 
 export type FilterValuesType = 'all' | 'active' | 'completed';
+
 export type TodoListType = {
     id: string
     title: string
