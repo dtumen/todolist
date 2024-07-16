@@ -8,6 +8,8 @@ import {AppBar, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 
+// init
+
 export type FilterValuesType = 'all' | 'active' | 'completed';
 
 export type TodoListType = {
