@@ -5,30 +5,3 @@ export type Todolist = {
     order: number
 }
 
-export type FieldError = {
-    error: string
-    field: string
-}
-
-export type CreateTodolistResponse = {
-    resultCode: number
-    messages: string[]
-    fieldsErrors: FieldError[]
-    data: {
-        item: Todolist
-    }
-}
-
-export type DeleteTodolistResponse = {
-    resultCode: number
-    messages: string[]
-    fieldsErrors: FieldError[]
-    data: {}
-}
-
-export type UpdateTodolistResponse = {
-    resultCode: number
-    messages: string[]
-    fieldsErrors: FieldError[]
-    data: {}
-}
